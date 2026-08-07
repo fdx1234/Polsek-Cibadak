@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi Polsek Cibadak</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --accent-color: #f57f17;
+            --dark-color: #212121;
+            --light-color: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        /* Top Bar Emergency & Jam */
+        .top-bar {
+            background-color: #d32f2f;
+            color: white;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .top-bar a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .clock-container {
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 2px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logo {
+            width: 45px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #b0bec5;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Slider Section */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 35, 126, 0.75), rgba(0, 0, 0, 0.85));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards ease-out;
+        }
+
+        .hero-content h2.fade-in-text {
+            animation-delay: 0.3s;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p.fade-in-text {
+            animation-delay: 0.8s;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .hero-content .btn.fade-in-text {
+            animation-delay: 1.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: #e65100;
+            transform: translateY(-2px);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2rem;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* Kapolsek Profile Section */
+        .kapolsek-section {
+            background: #ffffff;
+            padding: 50px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .kapolsek-card {
+            max-width: 950px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kapolsek-img-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .kapolsek-img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            background-color: #283593;
+        }
+
+        .kapolsek-badge {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .kapolsek-info {
+            flex-grow: 1;
+        }
+
+        .kapolsek-title {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .kapolsek-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(245, 127, 23, 0.5);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .kapolsek-quote {
+            font-style: italic;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        /* Services Section & Interaktivitas */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--accent-color);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+            position: relative;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                        box-shadow 0.3s ease, 
+                        border-color 0.3s ease;
+        }
+
+        .service-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(26, 35, 126, 0.15);
+            border-top-color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+
+        .service-card:hover h3 {
+            color: var(--accent-color);
+        }
+
+        .click-hint {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Modal Popup System */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 12px;
+            max-width: 650px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Contact & Info Section & Maps */
+        .info-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .info-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Tombol WhatsApp Melayang */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: pulse-wa 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            color: white;
+        }
+
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        .whatsapp-text {
+            font-weight: bold;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Layout Kontak Modal List */
+        .wa-contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .wa-contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 8px;
+            border-left: 4px solid #25d366;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .kapolsek-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+            }
+
+            .kapolsek-name {
+                font-size: 1.3rem;
+            }
+
+            .hero-content h2.fade-in-text {
+                font-size: 1.7rem;
+            }
+
+            .slider-btn {
+                padding: 5px 10px;
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-text {
+                display: none;
+            }
+
+            .whatsapp-float {
+                padding: 12px;
+                border-radius: 50%;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar dengan Jam Digital 24 Jam -->
+    <div class="top-bar">
+        <div>
+            <span>🚨 Layanan Darurat Kepolisian: </span>
+            <a href="tel:110">HUBUNGI 110</a>
+        </div>
+        <div class="clock-container">
+            🕒 <span id="liveClock">00:00:00 WIB</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="logo-container">
+            <!-- Logo Presisi / Polri -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Lambang_Polri.png/600px-Lambang_Polri.png" alt="Logo Polri" class="header-logo">
+            <div class="logo-text">
+                <h1>Polsek Cibadak</h1>
+                <p>Polres Sukabumi - Polda Jawa Barat</p>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#pimpinan">Kapolsek</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#pengaduan">Pengaduan</a></li>
+                <li><a onclick="openContactModal()">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider" id="beranda">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('https://i.postimg.cc/hPBSd5D7/2026-07-15-11-25-29-IMG-5368.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <h2 class="fade-in-text">Siap Melayani, Melindungi, dan Mengayomi</h2>
+                <p class="fade-in-text">Portal Resmi Pelayanan Publik dan Informasi Kepolisian Sektor Cibadak, Wilayah Hukum Polres Sukabumi.</p>
+                <a href="#pengaduan" class="btn fade-in-text">Lapor / Pengaduan Online</a>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('https://i.postimg.cc/zXBx0JGY/2026-07-15-11-21-36-IMG-5359.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <h2>Pelayanan Prima Kepada Masyarakat</h2>
+                <p>Kemudahan pengurusan SKCK, Laporan Kehilangan, dan Izin Keramaian secara efisien.</p>
+                <a href="#layanan" class="btn">Lihat Layanan Kami</a>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('https://i.postimg.cc/vmdLFMbD/2026-07-17-08-10-54-IMG-5420.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="hero-content">
+                <h2>Kamtibmas Kondusif, Masyarakat Aman</h2>
+                <p>Bersama menjaga keamanan dan ketertiban di wilayah hukum Polsek Cibadak.</p>
+                <button onclick="openContactModal()" class="btn">Hubungi Piket</button>
+            </div>
+        </div>
+
+        <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+
+    <!-- Seksi Profil Kapolsek Cibadak -->
+    <section class="kapolsek-section" id="pimpinan">
+        <div class="kapolsek-card">
+            <div class="kapolsek-img-wrapper">
+                <img src="https://i.postimg.cc/G3NDnrxx/2026-05-21-05-57-51-IMG-2665.jpg" alt="Foto Kapolsek Cibadak" class="kapolsek-img">
+                <div class="kapolsek-badge">KAPOLSEK CIBADAK</div>
+            </div>
+            <div class="kapolsek-info">
+                <div class="kapolsek-title">Kepala Kepolisian Sektor Cibadak</div>
+                <div class="kapolsek-name">AKP Joko Susanto Supono, S.Kom.</div>
+                <p class="kapolsek-quote">
+                    "Polsek Cibadak berkomitmen untuk senantiasa memberikan pelayanan terbaik, responsif, transparan, dan profesional dalam menjaga keamanan serta ketertiban masyarakat di wilayah Cibadak, Sukabumi."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container" id="layanan">
+        <div style="text-align: center;">
+            <h2 class="section-title">Layanan Publik</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" onclick="openServiceModal('skck')">
+                <h3>Penerbitan SKCK</h3>
+                <p>Informasi alur, syarat, dan tata cara pembuatan Surat Keterangan Catatan Kepolisian.</p>
+                <span class="click-hint">Klik untuk Info Lengkap & Foto ➔</span>
+            </div>
+            <div class="service-card" onclick="openServiceModal('kehilangan')">
+                <h3>Laporan Kehilangan</h3>
+                <p>Pelayanan pembuatan Surat Tanda Penerimaan Laporan Kehilangan (STPLK) barang/dokumen.</p>
+                <span class="click-hint">Klik untuk Info Lengkap & Foto ➔</span>
+            </div>
+            <div class="service-card" onclick="openServiceModal('keramaian')">
+                <h3>Izin Keramaian</h3>
+                <p>Pengajuan dan penerbitan surat izin kegiatan masyarakat dan keramaian di wilayah Cibadak.</p>
+                <span class="click-hint">Klik untuk Info Lengkap & Foto ➔</span>
+            </div>
+            <div class="service-card" onclick="openServiceModal('pengaduan')">
+                <h3>Pengaduan Masyarakat</h3>
+                <p>Layanan penerimaan laporan kejadian, tindak pidana, atau gangguan kamtibmas.</p>
+                <span class="click-hint">Klik untuk Info Lengkap & Foto ➔</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Layanan (Popup Detail) -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeServiceModal()">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Konten modal diisi dinamis via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Khusus Kontak & WhatsApp -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <div class="modal-body" style="text-align: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Lambang_Polri.png/600px-Lambang_Polri.png" alt="Logo Polri" style="width: 70px; margin-bottom: 10px;">
+                <h3>Layanan Kontak Resmi Polsek Cibadak</h3>
+                <p style="color: #666; font-size: 0.9rem;">Silakan pilih kontak WhatsApp petugas yang ingin Anda hubungi:</p>
+                
+                <div class="wa-contact-list">
+                    <div class="wa-contact-item">
+                        <div style="text-align: left;">
+                            <strong>Piket SPKT Polsek Cibadak</strong>
+                            <p style="font-size: 0.8rem; color: #666;">Layanan Pengaduan & Bantuan 24 Jam</p>
+                        </div>
+                        <a href="https://wa.me/62895365027217?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="btn" style="background-color: #25d366; padding: 8px 15px; font-size: 0.85rem;">Chat WA</a>
+                    </div>
+                    <div class="wa-contact-item">
+                        <div style="text-align: left;">
+                            <strong>Layanan Siaga Bhabinkamtibmas</strong>
+                            <p style="font-size: 0.8rem; color: #666;">Informasi Kewilayahan & Konsultasi</p>
+                        </div>
+                        <a href="https://wa.me/6285280053384?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="btn" style="background-color: #25d366; padding: 8px 15px; font-size: 0.85rem;">Chat WA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Info Section -->
+    <section class="info-section" id="kontak">
+        <div class="info-container">
+            <div>
+                <h3>Informasi & Kontak</h3>
+                <p style="margin-top: 10px;"><strong>Alamat:</strong> Jl. Perintis Kemerdekaan no.66 Cibadak, Kabupaten Sukabumi, Jawa Barat</p>
+                <p style="margin-top: 5px;"><strong>Email Resmi:</strong> <a href="mailto:polsekcibadak@gmail.com" style="color: var(--primary-color); font-weight: bold;">polsekcibadak@gmail.com</a></p>
+                <p style="margin-top: 5px;"><strong>Layanan Darurat:</strong> Call Center 110</p>
+                <p style="margin-top: 5px;"><strong>Jam Operasional:</strong> 24 Jam (SPKT)</p>
+                
+                <!-- Titik Lokasi Google Maps -->
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.915783515082!2d106.7865231!3d-6.9006733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e683777d13ebad3%3A0x6b74797fb1c2ff40!2sPolsek%20Cibadak!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            
+            <div id="pengaduan">
+                <h3>Layanan Whatsapp Lapor Polsek</h3>
+                <p style="margin-top: 10px;">Sampaikan informasi atau kejadian darurat langsung melalui pesan WhatsApp petugas piket Polsek Cibadak.</p>
+                <a href="https://wa.me/62895365027217?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="btn" style="margin-top: 15px; background-color: #25D366;">Chat WhatsApp Piket</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tombol WhatsApp Melayang (Floating WhatsApp) -->
+    <a href="https://wa.me/6285280053384?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="whatsapp-float" title="Chat WhatsApp Piket Polsek Cibadak">
+        <svg class="whatsapp-icon" viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.146-2.135c2.35 1.32 5.022 2.135 7.854 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.482 0-4.908-0.672-7.031-1.942l-0.504-0.3-5.213 1.366 1.391-5.181-0.33-0.524c-1.393-2.215-2.132-4.764-2.132-7.419 0-7.362 5.972-13.333 13.333-13.333s13.333 5.972 13.333 13.333-5.972 13.333-13.333 13.333zM22.502 19.349c-0.358-0.179-2.119-1.046-2.446-1.165s-0.567-0.179-0.806 0.179c-0.239 0.358-0.925 1.165-1.134 1.404s-0.418 0.269-0.776 0.090c-0.358-0.179-1.512-0.557-2.88-1.777-1.065-0.95-1.785-2.122-1.994-2.48s-0.022-0.551 0.157-0.729c0.161-0.161 0.358-0.418 0.537-0.627s0.239-0.358 0.358-0.597c0.119-0.239 0.060-0.448-0.030-0.627s-0.806-1.94-1.104-2.657c-0.291-0.699-0.587-0.604-0.806-0.615l-0.687-0.012c-0.239 0-0.627 0.090-0.955 0.448s-1.254 1.224-1.254 2.985 1.284 3.463 1.463 3.702c0.179 0.239 2.527 3.86 6.124 5.413 0.856 0.369 1.524 0.59 2.045 0.755 0.86 0.273 1.642 0.235 2.261 0.143 0.69-0.103 2.119-0.866 2.417-1.702s0.299-1.552 0.209-1.702c-0.090-0.149-0.328-0.239-0.687-0.418z"></path>
+        </svg>
+        <span class="whatsapp-text">Lapor WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kepolisian Sektor (Polsek) Cibadak - Polres Sukabumi. Presisi (Prediktif, Responsibilitas, Transparansi Berkeadilan).</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // 1. Logika Jam Digital 24 Jam Real-Time
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('liveClock').textContent = `${hours}:${minutes}:${seconds} WIB`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 2. Logika Banner Carousel
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide) => slide.classList.remove('active'));
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function moveSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        // 3. Logika Animasi Scroll Bertahap
+        const serviceCards = document.querySelectorAll('.service-card');
+        const observerOptions = { threshold: 0.2 };
+
+        const serviceObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('show');
+                    }, index * 150); 
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        serviceCards.forEach(card => serviceObserver.observe(card));
+
+        // 4. Logika Modal Detail Layanan
+        const serviceData = {
+            skck: {
+                title: "Penerbitan Surat Keterangan Catatan Kepolisian (SKCK)",
+                image: "https://i.postimg.cc/zXBx0JGY/2026-07-15-11-21-36-IMG-5359.jpg",
+                desc: "Layanan penerbitan SKCK diperuntukkan bagi warga yang memerlukan surat keterangan rekam jejak kepolisian untuk keperluan melamar pekerjaan, administrasi, dll.",
+                requirements: [
+                    "Fotokopi KTP (sesuai domisili)",
+                    "Fotokopi Kartu Keluarga (KK)",
+                    "Fotokopi Akta Kelahiran / Ijazah Terakhir",
+                    "Pasfoto terbaru ukuran 4x6 latar merah (6 lembar)",
+                    "Bukti kepesertaan aktif BPJS Kesehatan"
+                ]
+            },
+            kehilangan: {
+                title: "Laporan Kehilangan Barang / Dokumen",
+                image: "https://i.postimg.cc/hPBSd5D7/2026-07-15-11-25-29-IMG-5368.jpg",
+                desc: "Pelayanan penerbitan Surat Tanda Penerimaan Laporan Kehilangan (STPLK) untuk dokumen penting seperti KTP, SIM, STNK, BPKB, atau Buku Tabungan.",
+                requirements: [
+                    "Identitas Diri (KTP/Kartu Pelajar)",
+                    "Surat Pengantar dari Desa/Kelurahan setempat (jika ada)",
+                    "Fotokopi dokumen yang hilang (jika ada)",
+                    "Nomor rekening/nomor dokumen yang hilang (khusus buku tabungan/ATM)"
+                ]
+            },
+            keramaian: {
+                title: "Penerbitan Surat Izin Keramaian",
+                image: "https://i.postimg.cc/vmdLFMbD/2026-07-17-08-10-54-IMG-5420.jpg",
+                desc: "Diperlukan untuk kegiatan masyarakat yang mengumpulkan banyak orang seperti resepsi, pentas seni, pertandingan olahraga, atau kegiatan umum lainnya.",
+                requirements: [
+                    "Surat Permohonan Izin Keramaian dari Penanggung Jawab Kegiatan",
+                    "Surat Pengantar dari RT/RW & Desa/Kelurahan",
+                    "Rencana Susunan Acara & Denah Lokasi Kegiatan",
+                    "Fotokopi KTP Penanggung Jawab Kegiatan"
+                ]
+            },
+            pengaduan: {
+                title: "Layanan Pengaduan & Bantuan Masyarakat",
+                image: "https://i.postimg.cc/G3NDnrxx/2026-05-21-05-57-51-IMG-2665.jpg",
+                desc: "Sentra Pelayanan Kepolisian Terpadu (SPKT) Polsek Cibadak menerima laporan tindak pidana, kecelakaan, atau potensi gangguan keamanan di lingkungan sekitar secara cepat dan gratis.",
+                requirements: [
+                    "Identitas pelapor/korban (KTP)",
+                    "Penjelasan kronologi kejadian secara rinci",
+                    "Membawa barang bukti pendukung (jika ada)"
+                ]
+            }
+        };
+
+        function openServiceModal(type) {
+            const data = serviceData[type];
+            if (!data) return;
+
+            let reqListHTML = data.requirements.map(req => `<li>${req}</li>`).join('');
+
+            document.getElementById('modalBody').innerHTML = `
+                <img src="${data.image}" alt="${data.title}" class="modal-img">
+                <h3>${data.title}</h3>
+                <p>${data.desc}</p>
+                <h4 style="margin-top: 15px; color: var(--primary-color);">Persyaratan Dokumentasi:</h4>
+                <ul>${reqListHTML}</ul>
+                <p style="font-size:0.85rem; color:#d32f2f; font-weight:bold;">* Layanan SPKT Polsek Cibadak Bebas Pungli (Gratis kecuali PNBP SKCK sebesar Rp30.000 sesuai PP No.76/2020).</p>
+            `;
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        // 5. Logika Modal Kontak Khusus WhatsApp
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'flex';
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const serviceModal = document.getElementById('serviceModal');
+            const contactModal = document.getElementById('contactModal');
+            if (event.target === serviceModal) {
+                closeServiceModal();
+            }
+            if (event.target === contactModal) {
+                closeContactModal();
+            }
+        };
+    </script>
+</body>
+</html>
