@@ -1,0 +1,643 @@
+:root {
+    --primary-color: #1a237e;
+    --accent-color: #f57f17;
+    --dark-color: #212121;
+    --light-color: #f5f5f5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    overflow-x: hidden;
+}
+
+/* Top Bar Emergency & Jam */
+.top-bar {
+    background-color: #d32f2f;
+    color: white;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-bar a {
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.clock-container {
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+/* Header Navigation & Logo */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo {
+    width: 45px;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-text h1 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: #b0bec5;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+nav a:hover, nav a.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Sistem Tab Halaman Virtual */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Slider Section */
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(26, 35, 126, 0.75), rgba(0, 0, 0, 0.85));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-content h2 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #e65100;
+    transform: translateY(-2px);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Section Foto & Deskripsi Tugas Struktur Organisasi */
+.org-photo-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.org-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.org-photo-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-top: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.org-photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    border-top-color: var(--accent-color);
+}
+
+.org-single-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.org-photo-title {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.org-photo-desc {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: #444;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.org-photo-desc ul {
+    margin-left: 18px;
+    margin-top: 8px;
+}
+
+/* Info Lokasi & Email Terpisah */
+.org-extra-info {
+    margin-top: 40px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: left;
+    border-left: 5px solid var(--accent-color);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.info-item-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.info-item-text h4 {
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.info-item-text p, .info-item-text a {
+    font-size: 0.9rem;
+    color: #555;
+    text-decoration: none;
+}
+
+.info-item-text a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Kapolsek Profile Section */
+.kapolsek-section {
+    background: #ffffff;
+    padding: 60px 20px;
+}
+
+.kapolsek-card {
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    color: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(26, 35, 126, 0.2);
+}
+
+.kapolsek-img-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.kapolsek-img {
+    width: 180px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    background-color: #283593;
+}
+
+.kapolsek-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.kapolsek-info {
+    flex-grow: 1;
+}
+
+.kapolsek-title {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.kapolsek-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    border-bottom: 2px solid rgba(245, 127, 23, 0.5);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+
+.kapolsek-quote {
+    font-style: italic;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    margin-top: 10px;
+}
+
+/* Services Section */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    border-top: 5px solid var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(26, 35, 126, 0.15);
+    border-top-color: var(--accent-color);
+}
+
+.service-card h3 {
+    margin-bottom: 12px;
+    color: var(--primary-color);
+}
+
+.click-hint {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Google Maps Container */
+.map-container {
+    width: 100%;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 25px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Pengaduan Card & Contact Options */
+.pengaduan-box {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pengaduan-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.btn-wa {
+    background-color: #25d366;
+    color: white;
+}
+.btn-wa:hover { background-color: #128c7e; }
+
+.btn-gmail {
+    background-color: #ea4335;
+    color: white;
+}
+.btn-gmail:hover { background-color: #c5221f; }
+
+/* Modal System */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 12px;
+    max-width: 650px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-modal:hover { color: #000; }
+
+.modal-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.modal-body h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.modal-body ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+/* Informasi & Kontak Rata Tengah */
+.info-section {
+    background-color: white;
+    padding: 50px 20px;
+    margin-top: 40px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.info-centered {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-centered h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.info-centered p {
+    margin-top: 8px;
+    font-size: 1rem;
+}
+
+.contact-wa-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: translateY(-3px);
+}
+
+.whatsapp-icon {
+    width: 28px;
+    height: 28px;
+    fill: white;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .kapolsek-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+    }
+
+    .whatsapp-text { display: none; }
+    .whatsapp-float { padding: 12px; }
+    
+    .org-extra-info {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

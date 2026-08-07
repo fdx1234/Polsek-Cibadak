@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Resmi Polsek Cibadak</title>
+    <!-- Menghubungkan CSS Eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Bar Emergency & Jam -->
+    <div class="top-bar">
+        <div>
+            <span>🚨 Layanan Darurat Kepolisian: </span>
+            <a href="tel:110">HUBUNGI 110</a>
+        </div>
+        <div class="clock-container">
+            🕒 <span id="liveClock">00:00:00 WIB</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo-container">
+            <img src="https://i.postimg.cc/FKX3tDfk/Logo.jpg" alt="Logo Polri" class="header-logo">
+            <div class="logo-text">
+                <h1>Polsek Cibadak</h1>
+                <p>Polres Sukabumi - Polda Jawa Barat</p>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a onclick="switchTab('beranda')" id="nav-beranda" class="active">Beranda</a></li>
+                <li><a onclick="switchTab('kapolsek')" id="nav-kapolsek">Kapolsek</a></li>
+                <li><a onclick="switchTab('layanan')" id="nav-layanan">Layanan</a></li>
+                <li><a onclick="switchTab('pengaduan')" id="nav-pengaduan">Pengaduan</a></li>
+                <li><a onclick="switchTab('kontak')" id="nav-kontak">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= TAB 1: BERANDA ================= -->
+    <div id="tab-beranda" class="tab-content active">
+        <section class="hero-slider">
+            <div class="slide active" style="background-image: url('https://i.postimg.cc/hPBSd5D7/2026-07-15-11-25-29-IMG-5368.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2>Siap Melayani, Melindungi, dan Mengayomi</h2>
+                    <p>Portal Resmi Pelayanan Publik dan Informasi Kepolisian Sektor Cibadak, Wilayah Hukum Polres Sukabumi.</p>
+                    <button onclick="switchTab('pengaduan')" class="btn">Lapor / Pengaduan Online</button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://i.postimg.cc/zXBx0JGY/2026-07-15-11-21-36-IMG-5359.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2>Pelayanan Prima Kepada Masyarakat</h2>
+                    <p>Kemudahan pengurusan SKCK, Laporan Kehilangan, dan Izin Keramaian secara efisien.</p>
+                    <button onclick="switchTab('layanan')" class="btn">Lihat Layanan Kami</button>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://i.postimg.cc/vmdLFMbD/2026-07-17-08-10-54-IMG-5420.jpg');">
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2>Kamtibmas Kondusif, Masyarakat Aman</h2>
+                    <p>Bersama menjaga keamanan dan ketertiban di wilayah hukum Polsek Cibadak.</p>
+                    <button onclick="switchTab('kontak')" class="btn">Hubungi Piket</button>
+                </div>
+            </div>
+            <button class="slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+        </section>
+
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">Selamat Datang di Portal Polsek Cibadak</h2>
+            </div>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.05rem;">
+                Website ini dibuat untuk mempermudah masyarakat dalam memperoleh informasi seputar pelayanan kepolisian, pengajuan laporan, serta kontak darurat wilayah Hukum Polsek Cibadak.
+            </p>
+
+            <!-- Galeri Foto Struktur & Detail Tugas Unit Kerja -->
+            <div class="org-photo-section">
+                <h2 class="section-title">Struktur & Unit Kerja Polsek Cibadak</h2>
+                
+                <div class="org-photo-grid">
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/jd73b3gT/spkt.webp" alt="Foto SPKT Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">SPKT (Sentra Pelayanan Kepolisian Terpadu)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Merupakan pintu utama pelayanan kepolisian kepada masyarakat selama 24 jam nonstop.</p>
+                            <ul>
+                                <li>Menerima & membuat Laporan Polisi (LP) terkait tindak pidana.</li>
+                                <li>Menerbitkan Surat Tanda Penerimaan Laporan Kehilangan (STPLK).</li>
+                                <li>Pusat koordinasi awal penanganan pengaduan dan panggilan darurat masyarakat.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/NMR8nZGS/reskrim.png" alt="Foto Unit Reskrim Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">Unit Reskrim (Reserse Kriminal)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Bertanggung jawab dalam penegakan hukum dan penanganan perkara tindak pidana.</p>
+                            <ul>
+                                <li>Penyelidikan dan penyidikan tindak pidana kejahatan umum/khusus.</li>
+                                <li>Olah Tempat Kejadian Perkara (TKP) bersama tim identifikasi.</li>
+                                <li>Penyelesaian berkas perkara pidana untuk dilimpahkan ke Kejaksaan (JPU).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/RFGhqTgV/lantas.jpg" alt="Foto Unit Lantas Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">Unit Lantas (Lalu Lintas)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Menjaga keamanan, keselamatan, ketertiban, dan kelancaran lalu lintas (Kamseltibcarlantas).</p>
+                            <ul>
+                                <li>Pengaturan lalu lintas pada jam rawan di titik kemacetan utama Cibadak.</li>
+                                <li>Penanganan dan penanggulangan awal kasus kecelakaan lalu lintas.</li>
+                                <li>Edukasi serta sosialisasi tertib berlalulintas kepada pengguna jalan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/hv7kNDQg/intelkam.png" alt="Foto Unit Intelkam Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">Unit Intelkam (Intelijen Keamanan)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Menyelenggarakan fungsi intelijen serta pelayanan administrasi keamanan.</p>
+                            <ul>
+                                <li>Deteksi dini potensi kerawanan sosial dan gangguan kamtibmas.</li>
+                                <li>Pelayanan penerbitan SKCK (Surat Keterangan Catatan Kepolisian).</li>
+                                <li>Penerbitan Rekomendasi/Izin Kegiatan dan Keramaian Masyarakat.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/25yr2fG5/images-(1).png" alt="Foto Unit Binmas Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">Unit Binmas (Bimbingan Masyarakat)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Membina kemitraan, penyuluhan, dan pemberdayaan potensi masyarakat.</p>
+                            <ul>
+                                <li>Mengawasi dan mengoordinasikan jajaran Bhabinkamtibmas di setiap desa.</li>
+                                <li>Penyelesaian masalah sosial secara kekeluargaan (Problem Solving/Restorative Justice).</li>
+                                <li>Penyuluhan bahaya narkoba, kenakalan remaja, dan sosialisasi program Harkamtibmas.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="org-photo-card">
+                        <img src="https://i.postimg.cc/zvjcsyDx/images.jpg" alt="Foto Unit Samapta Polsek Cibadak" class="org-single-img">
+                        <div class="org-photo-title">Unit Samapta (Sabhara)</div>
+                        <div class="org-photo-desc">
+                            <strong>Tugas & Peran Utama:</strong>
+                            <p>Garda terdepan dalam pencegahan kejahatan secara preventif melalui giat lapangan.</p>
+                            <ul>
+                                <li>Patroli rutin, dialogis, dan berskala besar pada wilayah rawan kejahatan malam hari.</li>
+                                <li>Pengamanan obyek vital, pusat keramaian, dan kegiatan peribadatan/acara publik.</li>
+                                <li>Penanganan pertama pada tindakan unjuk rasa atau potensi konflik warga.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Lokasi & Email Resmi -->
+                <div class="org-extra-info">
+                    <div class="info-item">
+                        <div class="info-item-icon">📍</div>
+                        <div class="info-item-text">
+                            <h4>Lokasi Markas Komando</h4>
+                            <p>Jl. Perintis Kemerdekaan No.66, Cibadak, Kab. Sukabumi, Jawa Barat</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-item-icon">✉️</div>
+                        <div class="info-item-text">
+                            <h4>Email Resmi</h4>
+                            <p><a href="mailto:fadhilhanif223@gmail.com">fadhilhanif223@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ================= TAB 2: KAPOLSEK ================= -->
+    <div id="tab-kapolsek" class="tab-content">
+        <section class="kapolsek-section">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h2 class="section-title">Profil Pimpinan Polsek Cibadak</h2>
+            </div>
+            <div class="kapolsek-card">
+                <div class="kapolsek-img-wrapper">
+                    <img src="https://i.postimg.cc/G3NDnrxx/2026-05-21-05-57-51-IMG-2665.jpg" alt="Foto Kapolsek Cibadak" class="kapolsek-img">
+                    <div class="kapolsek-badge">KAPOLSEK CIBADAK</div>
+                </div>
+                <div class="kapolsek-info">
+                    <div class="kapolsek-title">Kepala Kepolisian Sektor Cibadak</div>
+                    <div class="kapolsek-name">AKP Joko Susanto Supono, S.Kom.</div>
+                    <p class="kapolsek-quote">
+                        "Polsek Cibadak berkomitmen untuk senantiasa memberikan pelayanan terbaik, responsif, transparan, dan profesional dalam menjaga keamanan serta ketertiban masyarakat di wilayah Cibadak, Sukabumi."
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ================= TAB 3: LAYANAN ================= -->
+    <div id="tab-layanan" class="tab-content">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 class="section-title">Layanan Publik Kepolisian</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" onclick="openServiceModal('skck')">
+                    <h3>Penerbitan SKCK</h3>
+                    <p>Informasi alur, syarat, dan tata cara pembuatan Surat Keterangan Catatan Kepolisian.</p>
+                    <span class="click-hint">Klik Detail Layanan ➔</span>
+                </div>
+                <div class="service-card" onclick="openServiceModal('kehilangan')">
+                    <h3>Laporan Kehilangan</h3>
+                    <p>Pelayanan pembuatan Surat Tanda Penerimaan Laporan Kehilangan (STPLK).</p>
+                    <span class="click-hint">Klik Detail Layanan ➔</span>
+                </div>
+                <div class="service-card" onclick="openServiceModal('keramaian')">
+                    <h3>Izin Keramaian</h3>
+                    <p>Pengajuan dan penerbitan surat izin kegiatan masyarakat dan keramaian.</p>
+                    <span class="click-hint">Klik Detail Layanan ➔</span>
+                </div>
+                <div class="service-card" onclick="openServiceModal('pengaduan')">
+                    <h3>Pengaduan Masyarakat</h3>
+                    <p>Layanan penerimaan laporan kejadian, tindak pidana, atau gangguan kamtibmas.</p>
+                    <span class="click-hint">Klik Detail Layanan ➔</span>
+                </div>
+            </div>
+
+            <!-- Peta Google Maps -->
+            <div style="margin-top: 50px; text-align: center;">
+                <h3 style="color: var(--primary-color);">Lokasi Kantor Polsek Cibadak</h3>
+                <p style="font-size: 0.9rem; color: #666;">Jl. Perintis Kemerdekaan no.66 Cibadak, Kabupaten Sukabumi, Jawa Barat</p>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.915783515082!2d106.7865231!3d-6.9006733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e683777d13ebad3%3A0x6b74797fb1c2ff40!2sPolsek%20Cibadak!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TAB 4: PENGADUAN ================= -->
+    <div id="tab-pengaduan" class="tab-content">
+        <div class="container">
+            <div class="pengaduan-box">
+                <h2 class="section-title">Laporan & Pengaduan Online</h2>
+                <p style="font-size: 1.05rem; margin-top: 15px;">
+                    Apabila Anda melihat, mengalami, atau membutuhkan bantuan penanganan gangguan keamanan dan tindak kejahatan di wilayah hukum Polsek Cibadak, silakan hubungi kami secara langsung melalui WhatsApp atau Email resmi di bawah ini:
+                </p>
+
+                <div class="pengaduan-actions">
+                    <a href="https://wa.me/62895365027217?text=Lapor%20Pak,%20Saya%20ingin%20membuat%20pengaduan/laporan.%20Mohon%20bantuannya." target="_blank" class="btn btn-wa">
+                        📱 Lapor via WhatsApp (SPKT)
+                    </a>
+                    <a href="mailto:fadhilhanif223@gmail.com?subject=Pengaduan%20Masyarakat%20Polsek%20Cibadak&body=Halo%20Polsek%20Cibadak,%20saya%20ingin%20melaporkan:" class="btn btn-gmail">
+                        ✉️ Lapor via Gmail
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TAB 5: KONTAK & INFORMASI ================= -->
+    <div id="tab-kontak" class="tab-content">
+        <section class="info-section">
+            <div class="info-centered">
+                <h3>Informasi & Kontak Resmi</h3>
+                <p><strong>Alamat:</strong> Jl. Perintis Kemerdekaan no.66 Cibadak, Kabupaten Sukabumi, Jawa Barat</p>
+                <p><strong>Email Resmi:</strong> <a href="mailto:fadhilhanif223@gmail.com" style="color: var(--primary-color); font-weight: bold;">fadhilhanif223@gmail.com</a></p>
+                <p><strong>Layanan Darurat:</strong> Call Center 110 (Bebas Pulsa)</p>
+                <p><strong>Jam Operasional SPKT:</strong> 24 Jam Nonstop</p>
+
+                <div style="margin-top: 30px;">
+                    <h4 style="color: var(--primary-color); margin-bottom: 10px;">Layanan WhatsApp Petugas Piket:</h4>
+                    <div class="contact-wa-list">
+                        <a href="https://wa.me/62895365027217?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="btn btn-wa">
+                            💬 Chat Piket SPKT (0895-3650-27217)
+                        </a>
+                        <a href="https://wa.me/6285280053384?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="btn btn-wa">
+                            💬 Chat Siaga Bhabinkamtibmas (0852-8005-3384)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Layanan (Popup Detail) -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeServiceModal()">&times;</span>
+            <div id="modalBody" class="modal-body">
+                <!-- Konten dinamis -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6285280053384?text=Lapor%20Pak,Butuh%20Bantuan%20Secepatnya%20SALAMPRESISI" target="_blank" class="whatsapp-float" title="Chat WhatsApp Piket Polsek Cibadak">
+        <svg class="whatsapp-icon" viewBox="0 0 32 32">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.737 5.607 2.137 8.048l-2.137 7.952 8.146-2.135c2.35 1.32 5.022 2.135 7.854 2.135 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.482 0-4.908-0.672-7.031-1.942l-0.504-0.3-5.213 1.366 1.391-5.181-0.33-0.524c-1.393-2.215-2.132-4.764-2.132-7.419 0-7.362 5.972-13.333 13.333-13.333s13.333 5.972 13.333 13.333-5.972 13.333-13.333 13.333zM22.502 19.349c-0.358-0.179-2.119-1.046-2.446-1.165s-0.567-0.179-0.806 0.179c-0.239 0.358-0.925 1.165-1.134 1.404s-0.418 0.269-0.776 0.090c-0.358-0.179-1.512-0.557-2.88-1.777-1.065-0.95-1.785-2.122-1.994-2.48s-0.022-0.551 0.157-0.729c0.161-0.161 0.358-0.418 0.537-0.627s0.239-0.358 0.358-0.597c0.119-0.239 0.060-0.448-0.030-0.627s-0.806-1.94-1.104-2.657c-0.291-0.699-0.587-0.604-0.806-0.615l-0.687-0.012c-0.239 0-0.627 0.090-0.955 0.448s-1.254 1.224-1.254 2.985 1.284 3.463 1.463 3.702c0.179 0.239 2.527 3.86 6.124 5.413 0.856 0.369 1.524 0.59 2.045 0.755 0.86 0.273 1.642 0.235 2.261 0.143 0.69-0.103 2.119-0.866 2.417-1.702s0.299-1.552 0.209-1.702c-0.090-0.149-0.328-0.239-0.687-0.418z"></path>
+        </svg>
+        <span class="whatsapp-text">Lapor WhatsApp</span>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Kepolisian Sektor (Polsek) Cibadak - Polres Sukabumi. Presisi (Prediktif, Responsibilitas, Transparansi Berkeadilan).</p>
+    </footer>
+
+    <!-- Menghubungkan JavaScript Eksternal -->
+    <script src="script.js"></script>
+</body>
+</html>
